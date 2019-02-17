@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import Amplify, { Analytics, Storage, API, graphqlOperation } from 'aws-amplify';
 import { withAuthenticator, S3Album } from 'aws-amplify-react';
@@ -60,14 +60,37 @@ class App extends Component {
     alert(JSON.stringify(allTodos));
   }
 
+  post = async () => {
+    console.log('calling api');
+    const response = await API.post('apid6ab3b09', '/items', {
+      body: {
+        id: '1',
+        name: 'hello amplify!'
+      }
+    });
+    alert(JSON.stringify(response, null, 2));
+  }
+  get = async () => {
+    console.log('calling api');
+    const response = await API.get('apid6ab3b09', '/items/object/1');
+    alert(JSON.stringify(response, null, 2));
+  }
+  list = async () => {
+    console.log('calling api');
+    const response = await API.get('apid6ab3b09', '/items/1');
+    alert(JSON.stringify(response, null, 2));
+  }
+
   render() {
     return (
       <div className="App">
         <p> Pick a file</p>
         <input type="file" onChange={this.uploadFile} />
-        <button onClick={this.listQuery}>GraphQL Query</button>
-        <button onClick={this.todoMutation}>GraphQL Mutation</button>
-        <S3Album level="private" path='' />
+        <button onClick={this.post}>POST</button>
+        <button onClick={this.get}>GET</button>
+        <button onClick={this.list}>LIST</button>
+        
+        <S3Album level="public" path='' />
       </div>
     );
   }

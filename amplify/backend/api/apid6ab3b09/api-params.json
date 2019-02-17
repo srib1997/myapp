@@ -1,0 +1,36 @@
+{
+    "paths": [
+        {
+            "name": "/items",
+            "lambdaFunction": "myappb12529bc",
+            "privacy": {
+                "protected": true,
+                "auth": "rw",
+                "unauth": "rw"
+            }
+        }
+    ],
+    "resourceName": "apid6ab3b09",
+    "apiName": "apid6ab3b09",
+    "functionArns": [
+        {
+            "lambdaFunction": "myappb12529bc"
+        }
+    ],
+    "privacy": {
+        "auth": 1,
+        "unauth": 1,
+        "authRoleName": "myapp-20190217110315-authRole",
+        "unAuthRoleName": "myapp-20190217110315-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "myappb12529bc",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}

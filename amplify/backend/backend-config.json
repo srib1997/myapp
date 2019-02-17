@@ -21,6 +21,10 @@
 		"s3b560c38f": {
 			"service": "S3",
 			"providerPlugin": "awscloudformation"
+		},
+		"dynamo08c31c4c": {
+			"service": "DynamoDB",
+			"providerPlugin": "awscloudformation"
 		}
 	},
 	"api": {
@@ -30,6 +34,37 @@
 			"output": {
 				"securityType": "AMAZON_COGNITO_USER_POOLS"
 			}
+		},
+		"apid6ab3b09": {
+			"service": "API Gateway",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [
+				{
+					"category": "function",
+					"resourceName": "myappb12529bc",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			]
+		}
+	},
+	"function": {
+		"myappb12529bc": {
+			"service": "Lambda",
+			"providerPlugin": "awscloudformation",
+			"build": true,
+			"dependsOn": [
+				{
+					"category": "storage",
+					"resourceName": "dynamo08c31c4c",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			]
 		}
 	}
 }
