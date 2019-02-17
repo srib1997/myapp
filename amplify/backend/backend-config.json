@@ -10,5 +10,17 @@
 			"service": "Cognito",
 			"providerPlugin": "awscloudformation"
 		}
+	},
+	"analytics": {
+		"myapp": {
+			"service": "Pinpoint",
+			"providerPlugin": "awscloudformation"
+		}
+	},
+	"storage": {
+		"s3b560c38f": {
+			"service": "S3",
+			"providerPlugin": "awscloudformation"
+		}
 	}
 }
